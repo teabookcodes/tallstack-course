@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,16 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::view('collections', 'collections.index')
+    ->middleware(['auth'])
+    ->name('collections.index');
+
+Route::view('collections/create', 'collections.create')
+    ->middleware(['auth'])
+    ->name('collections.create');
+
+Volt::route('collections/{collection}/edit', 'collections.edit-collection')
+    ->middleware(['auth'])
+    ->name('collections.edit');
+
+require __DIR__ . '/auth.php';
